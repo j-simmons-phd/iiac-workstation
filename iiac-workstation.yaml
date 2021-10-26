@@ -12,9 +12,16 @@
   #        the play, this section can also be used for 
   #        pre and post tasks
   tasks:
-    - name: Set wsl2_environment fact
+    - name: Set wsl2_environment fact default to False
       set_fact:
-        wsl2_environment: ansible_kernel is search("microsoft-standard-WSL2")
+        wsl2_environment: False
+    - name: Set wsl2_environment fact True
+      set_fact:
+        wsl2_environment: True
+      when: ansible_kernel is search("microsoft-standard-WSL2")
+    - name: Display wsl2_environment 
+      debug:
+        msg: "{{ wsl2_environment }}"
     - name: Test wsl2_environment true
       debug:
         msg: "Found WSL2 Environment"
