@@ -40,6 +40,5 @@ Follow the official [Installing Ansible on specific operating systems](https://d
 ## Install IIaC Toolchain
 
 1. Download the iiac-workstation.yaml file to your by running `wget ...`
-1. Windows 11 users, run `ansible-playbook ...`
-1. Linux users, run `ansible-playbook ...`
+1. All users, run `ansible-playbook -i,localhost ./iiac-workstation.yaml`
 

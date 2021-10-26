@@ -1,0 +1,33 @@
+---
+# IIaC Workstation Playbook
+-
+
+  # Hosts: where our play will run and options it will run with
+  hosts: localhost
+  connection: local
+
+  # Vars: variables that will apply to the play, on all targets 
+
+  # Tasks: the list of tasks that will be executed within 
+  #        the play, this section can also be used for 
+  #        pre and post tasks
+  tasks:
+    - name: Set wsl2_environment fact
+      set_fact:
+        wsl2_environment: ansible_kernel is search("microsoft-standard-WSL2")
+    - name: Test wsl2_environment true
+      debug:
+        msg: "Found WSL2 Environment"
+      when: wsl2_environment
+    - name: Test wsl2_environment false
+      debug:
+        msg: "Found Native Environment"
+      when: not wsl2_environment
+
+  # Handlers: the list of handlers that are executed as a notify 
+  #           key from a task
+
+
+  # Roles: list of roles to be imported into the play
+
+...
