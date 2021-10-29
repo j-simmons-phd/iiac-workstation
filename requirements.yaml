@@ -1,0 +1,5 @@
+---
+# iiac-workstation requirements
+- xanmanning.virtualbox     # https://galaxy.ansible.com/xanmanning/virtualbox
+- diodonfrost.vagrant       # https://galaxy.ansible.com/diodonfrost/vagrant
+...
