@@ -41,6 +41,8 @@ Follow the official [Installing Ansible on specific operating systems](https://d
 
 Note, these instructions are for all users, including Windows 11 running inside a WSL2 environment.
 
-1. Download the iiac-workstation.yaml file to your by running `wget https://raw.githubusercontent.com/j-simmons-phd/iiac-workstation/main/iiac-workstation.yaml`
-1. Execute the playbook by running `ansible-playbook -i,localhost ./iiac-workstation.yaml`
+1. Download the requirements.yaml file to your computer by running `wget https://raw.githubusercontent.com/j-simmons-phd/iiac-workstation/main/requirements.yaml`
+1. Download the iiac-workstation.yaml file to your computer by running `wget https://raw.githubusercontent.com/j-simmons-phd/iiac-workstation/main/iiac-workstation.yaml`
+1. Install the requirements by running `ansible-galaxy install -r requirements.yaml`
+1. Execute the playbook by running `ansible-playbook -i,localhost --ask-become-pass ./iiac-workstation.yaml`
 
