@@ -10,8 +10,8 @@ The full provided IIaC toolchain is as follows:
 - [Vagrant](https://www.vagrantup.com)
 - [Terraform](https://www.terraform.io/)
 - [Packer](https://www.packer.io/)
-- [Visual Studio Code](https://code.visualstudio.com/), including plugins for Docker, Vagrant, Terraform, Packer, and Ansible
 - [Git](https://git-scm.com/)
+- [Visual Studio Code](https://code.visualstudio.com/), including extensions for [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker), [Vagrant](https://marketplace.visualstudio.com/items?itemName=marcostazi.VS-code-vagrantfile), [Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform), [Packer](https://marketplace.visualstudio.com/items?itemName=4ops.packer), and [Ansible](https://marketplace.visualstudio.com/items?itemName=tomaciazek.ansible)
 - Vim language support for Docker, Vagrant, Terraform, Packer, and Ansible
 
 ## Prerequisites
@@ -38,6 +38,16 @@ Ansible only runs under Unix-like operating systems, so Windows 11 users must op
 Follow the official [Installing Ansible on specific operating systems](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-specific-operating-systems) instructions to install Ansible.  Windows 11 users, remember to follow these instructions in your WSL2 Ubuntu environment.
 
 ## Install IIaC Toolchain
+
+### Windows 11 Users Pre-Installation Steps
+
+Note, these instructions must be run inside the WSL2 environment.
+
+1. Download the iiac-wsl2-env.yaml file to your computer by running `wget https://raw.githubusercontent.com/j-simmons-phd/iiac-workstation/main/iiac-wsl2-env.yaml`
+1. Apply the WSL2 specific environment variables to your .bashrc file by running `ansible-playbook -i,localhost ./iiac-wsl2-env.yaml`
+1. Source your .bashrc file to enable the new environmnet variables by running `source ~/.bashrc`
+
+### All Users Installation Steps
 
 Note, these instructions are for all users, including Windows 11 running inside a WSL2 environment.
 
