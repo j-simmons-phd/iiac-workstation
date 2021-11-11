@@ -6,18 +6,18 @@
   hosts: localhost
   connection: local
 
-  # Vars: variables that will apply to the play, on all targets 
+  # Vars: variables that will apply to the play, on all targets
 
-  # Tasks: the list of tasks that will be executed within 
-  #        the play, this section can also be used for 
+  # Tasks: the list of tasks that will be executed within
+  #        the play, this section can also be used for
   #        pre and post tasks
   tasks:
-    - name: Set wsl2_environment fact default to False
+    - name: Set wsl2_environment fact default to false
       set_fact:
-        wsl2_environment: False
-    - name: Set wsl2_environment fact True
+        wsl2_environment: false
+    - name: Set wsl2_environment fact true
       set_fact:
-        wsl2_environment: True
+        wsl2_environment: true
       when: ansible_kernel is search("microsoft-standard-WSL2")
     - name: Set iiac_username
       set_fact:
@@ -27,23 +27,23 @@
         msg: "WSL2 = {{ wsl2_environment }} | iiac_username = {{ iiac_username }}"
 
 
-  # Handlers: the list of handlers that are executed as a notify 
+  # Handlers: the list of handlers that are executed as a notify
   #           key from a task
 
 
   # Roles: list of roles to be imported into the play
-    
-- 
+
+-
   # Hosts: where our play will run and options it will run with
   hosts: localhost
   connection: local
   become: true
 
-  # Vars: variables that will apply to the play, on all targets 
+  # Vars: variables that will apply to the play, on all targets
 
 
-  # Tasks: the list of tasks that will be executed within 
-  #        the play, this section can also be used for 
+  # Tasks: the list of tasks that will be executed within
+  #        the play, this section can also be used for
   #        pre and post tasks
   tasks:
     - name: Install packages from pip
@@ -52,7 +52,7 @@
           - ansible-lint[yamllint]
           - pywinrm
 
-  # Handlers: the list of handlers that are executed as a notify 
+  # Handlers: the list of handlers that are executed as a notify
   #           key from a task
 
 
@@ -60,21 +60,21 @@
   roles:
     - role: geerlingguy.pip
 
-- 
+-
   # Hosts: where our play will run and options it will run with
   hosts: localhost
   connection: local
   become: true
 
-  # Vars: variables that will apply to the play, on all targets 
+  # Vars: variables that will apply to the play, on all targets
 
 
-  # Tasks: the list of tasks that will be executed within 
-  #        the play, this section can also be used for 
+  # Tasks: the list of tasks that will be executed within
+  #        the play, this section can also be used for
   #        pre and post tasks
 
 
-  # Handlers: the list of handlers that are executed as a notify 
+  # Handlers: the list of handlers that are executed as a notify
   #           key from a task
 
 
@@ -82,18 +82,18 @@
   roles:
     - role: xanmanning.virtualbox
       when: not wsl2_environment
-    
+
     - role: geerlingguy.docker
       when: not wsl2_environment
-      
+
     - role: diodonfrost.vagrant
-    
+
     - role: andrewrothstein.terraform
-    
+
     - role: geerlingguy.packer
-    
+
     - role: geerlingguy.git
-    
+
     - role: gantsign.visual-studio-code
       users:
         - username: "{{ iiac_username }}"
@@ -104,20 +104,20 @@
             - 4ops.packer
             - tomaciazek.ansible
 
-- 
+-
   # Hosts: where our play will run and options it will run with
   hosts: localhost
   connection: local
 
-  # Vars: variables that will apply to the play, on all targets 
+  # Vars: variables that will apply to the play, on all targets
 
 
-  # Tasks: the list of tasks that will be executed within 
-  #        the play, this section can also be used for 
+  # Tasks: the list of tasks that will be executed within
+  #        the play, this section can also be used for
   #        pre and post tasks
 
 
-  # Handlers: the list of handlers that are executed as a notify 
+  # Handlers: the list of handlers that are executed as a notify
   #           key from a task
 
 
