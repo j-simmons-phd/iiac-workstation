@@ -12,7 +12,6 @@ The full provided IIaC toolchain is as follows:
 - [Packer](https://www.packer.io/)
 - [Git](https://git-scm.com/)
 - [Visual Studio Code](https://code.visualstudio.com/), including extensions for [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker), [Vagrant](https://marketplace.visualstudio.com/items?itemName=marcostazi.VS-code-vagrantfile), [Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform), [Packer](https://marketplace.visualstudio.com/items?itemName=4ops.packer), and [Ansible](https://marketplace.visualstudio.com/items?itemName=tomaciazek.ansible)
-- Vim language support for Docker, Vagrant, Terraform, Packer, and Ansible
 
 ## Prerequisites
 
