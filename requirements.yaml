@@ -1,5 +1,11 @@
 ---
 # iiac-workstation requirements
-- xanmanning.virtualbox     # https://galaxy.ansible.com/xanmanning/virtualbox
-- diodonfrost.vagrant       # https://galaxy.ansible.com/diodonfrost/vagrant
+- geerlingguy.pip               # https://galaxy.ansible.com/geerlingguy/pip
+- xanmanning.virtualbox         # https://galaxy.ansible.com/xanmanning/virtualbox
+- geerlingguy.docker            # https://galaxy.ansible.com/geerlingguy/docker
+- diodonfrost.vagrant           # https://galaxy.ansible.com/diodonfrost/vagrant
+- andrewrothstein.terraform     # https://galaxy.ansible.com/andrewrothstein/terraform
+- geerlingguy.packer            # https://galaxy.ansible.com/geerlingguy/packer
+- geerlingguy.git               # https://galaxy.ansible.com/geerlingguy/git
+- gantsign.visual-studio-code   # https://galaxy.ansible.com/gantsign/visual-studio-code
 ...

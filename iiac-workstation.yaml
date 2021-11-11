@@ -19,9 +19,12 @@
       set_fact:
         wsl2_environment: True
       when: ansible_kernel is search("microsoft-standard-WSL2")
-    - name: Display wsl2_environment 
+    - name: Set iiac_username
+      set_fact:
+        iiac_username: "{{ ansible_user_id }}"
+    - name: Display wsl2_environment and iiac_username
       debug:
-        msg: "WSL2 = {{ wsl2_environment }}"
+        msg: "WSL2 = {{ wsl2_environment }} | iiac_username = {{ iiac_username }}"
 
 
   # Handlers: the list of handlers that are executed as a notify 
@@ -43,9 +46,33 @@
   #        the play, this section can also be used for 
   #        pre and post tasks
   tasks:
-    - name: Display wsl2_environment in roles play 
-      debug:
-        msg: "WSL2 = {{ wsl2_environment }} in Roles play"
+    - name: Install packages from pip
+      pip:
+        name:
+          - ansible-lint[yamllint]
+          - pywinrm
+
+  # Handlers: the list of handlers that are executed as a notify 
+  #           key from a task
+
+
+  # Roles: list of roles to be imported into the play
+  roles:
+    - role: geerlingguy.pip
+
+- 
+  # Hosts: where our play will run and options it will run with
+  hosts: localhost
+  connection: local
+  become: true
+
+  # Vars: variables that will apply to the play, on all targets 
+
+
+  # Tasks: the list of tasks that will be executed within 
+  #        the play, this section can also be used for 
+  #        pre and post tasks
+
 
   # Handlers: the list of handlers that are executed as a notify 
   #           key from a task
@@ -55,6 +82,51 @@
   roles:
     - role: xanmanning.virtualbox
       when: not wsl2_environment
+    
+    - role: geerlingguy.docker
+      when: not wsl2_environment
       
     - role: diodonfrost.vagrant
+    
+    - role: andrewrothstein.terraform
+    
+    - role: geerlingguy.packer
+    
+    - role: geerlingguy.git
+    
+    - role: gantsign.visual-studio-code
+      users:
+        - username: "{{ iiac_username }}"
+          visual_studio_code_extensions:
+            - ms-azuretools.vscode-docker
+            - marcostazi.VS-code-vagrantfile
+            - HashiCorp.terraform
+            - 4ops.packer
+            - tomaciazek.ansible
+
+- 
+  # Hosts: where our play will run and options it will run with
+  hosts: localhost
+  connection: local
+
+  # Vars: variables that will apply to the play, on all targets 
+
+
+  # Tasks: the list of tasks that will be executed within 
+  #        the play, this section can also be used for 
+  #        pre and post tasks
+
+
+  # Handlers: the list of handlers that are executed as a notify 
+  #           key from a task
+
+
+  # Roles: list of roles to be imported into the play
+  roles:
+    - role: diodonfrost.vagrant
+      vagrant_plugins:
+        - virtualbox_WSL2
+      when: wsl2_environment
+
+
 ...

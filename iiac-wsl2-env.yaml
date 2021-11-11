@@ -1,0 +1,50 @@
+---
+# IIaC WSL2 Environment Playbook
+-
+
+  # Hosts: where our play will run and options it will run with
+  hosts: localhost
+  connection: local
+
+  # Vars: variables that will apply to the play, on all targets
+
+  # Tasks: the list of tasks that will be executed within
+  #        the play, this section can also be used for
+  #        pre and post tasks
+  tasks:
+    - name: Set wsl2_environment fact default to false
+      set_fact:
+        wsl2_environment: false
+    - name: Set wsl2_environment fact True
+      set_fact:
+        wsl2_environment: true
+      when: ansible_kernel is search("microsoft-standard-WSL2")
+    - name: Set iiac_username
+      set_fact:
+        iiac_username: "{{ ansible_user_id }}"
+    - name: Display wsl2_environment and iiac_username
+      debug:
+        msg: "WSL2 = {{ wsl2_environment }} | iiac_username = {{ iiac_username }}"
+    - name: Add WSL2 required variables to the environment
+      lineinfile:
+        path: "/home/{{ iiac_username }}/.bashrc"
+        line: "{{ item }}"
+        create: true
+        mode: 0644
+        owner: "{{ iiac_username }}"
+      with_items:
+        - export DONT_PROMPT_WSL_INSTALL=1
+        - export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1
+        - export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
+      when: wsl2_environment
+    - name: Inform user to source .bashrc
+      debug:
+        msg: "Please run: source /home/{{ iiac_username }}/.bashrc"
+
+
+  # Handlers: the list of handlers that are executed as a notify
+  #           key from a task
+
+
+  # Roles: list of roles to be imported into the play
+...
