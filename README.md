@@ -56,3 +56,4 @@ Note, these instructions are for all users, including Windows 11 running inside 
 1. Install the requirements by running `ansible-galaxy install -r requirements.yaml`
 1. Execute the playbook by running `ansible-playbook -i,localhost --ask-become-pass ./iiac-workstation.yaml`
 
+Note:  If you run into an Vagrant error about `chmod` under WSL2 on Windows 11, see the fix at [Error `chmod’: Operation not permitted @ chmod_internal](https://discourse.roots.io/t/error-chmod-operation-not-permitted-chmod-internal/17632). 
