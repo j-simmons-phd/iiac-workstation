@@ -23,13 +23,14 @@ All users must install Ansible manually before proceeding.  Windows 11 users hav
 
 Ansible only runs under Unix-like operating systems, so Windows 11 users must operate within a WSL2 Ubuntu environment.  Further, a WSL Ubuntu environment cannot run VirtualBox or Docker.  So, these two tools must also be installed before proceeding with the Ansible install.  We will use Chocolatey to facilitate these installations.
 
+1. Ensure the WSL2 is installed and up to date
+    1. Determine if WSL2 is installed by running `wsl --status` from an elevated command prompt
+    1. If WSL2 is not installed, install it by running `wsl --install` from an elevated command prompt (you will be prompted to reboot, after which execute the following step)
+    1. If WSL2 is installed, update it by running `wsl --update` from an elevated command prompt and follow any additional prompts
+    1. Confirm WSL2 is fully installed and up to date by running `wsl --status` from an elevated command prompt, again
 1. [Install Chocolatey](https://chocolatey.org/install)
 1. Install VirtualBox by running `choco install virtualbox` from an elevated command prompt, verify it installed correctly by launching from the Start Menu
 1. Install Docker by running  `choco install docker-desktop` from an elevated command prompt, verify it installed correctly by launching from the Start Menu and accepting the license
-1. Ensure the WSL2 is installed and up to date
-    1. Determine if WSL2 is installed by running `wsl --status` from an elevated command prompt
-    1. If WSL2 is not installed, install it by running `wsl --install` from an elevated command prompt
-    1. If WSL2 is installed, update it by running `wsl --update` from an elevated command prompt
 1. Install WSL2 Ubuntu environment from the **Microsoft Store** by launching the **Microsoft Store**, searching for Ubuntu and clicking the **Get** button, then launch it from the start menu and follow prompts to create your Ubuntu user
 
 ### Install Ansible
