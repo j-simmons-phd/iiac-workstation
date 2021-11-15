@@ -43,7 +43,7 @@ Follow the official [Installing Ansible on specific operating systems](https://d
 
 Note, these instructions must be run inside the WSL2 environment.
 
-1. Download the iiac-wsl2-env.yaml file to your computer by running `wget https://raw.githubusercontent.com/j-simmons-phd/iiac-workstation/main/iiac-wsl2-env.yaml`
+1. Download the iiac-wsl2-env.yaml file to your computer by running `wget https://raw.githubusercontent.com/j-simmons-phd/iiac-workstation/v1.0.0-alpha/iiac-wsl2-env.yaml`
 1. Apply the WSL2 specific environment variables to your .bashrc file by running `ansible-playbook -i,localhost ./iiac-wsl2-env.yaml`
 1. Source your .bashrc file to enable the new environmnet variables by running `source ~/.bashrc`
 
@@ -51,8 +51,8 @@ Note, these instructions must be run inside the WSL2 environment.
 
 Note, these instructions are for all users, including Windows 11 running inside a WSL2 environment.
 
-1. Download the requirements.yaml file to your computer by running `wget https://raw.githubusercontent.com/j-simmons-phd/iiac-workstation/main/requirements.yaml`
-1. Download the iiac-workstation.yaml file to your computer by running `wget https://raw.githubusercontent.com/j-simmons-phd/iiac-workstation/main/iiac-workstation.yaml`
+1. Download the requirements.yaml file to your computer by running `wget https://raw.githubusercontent.com/j-simmons-phd/iiac-workstation/v1.0.0-alpha/requirements.yaml`
+1. Download the iiac-workstation.yaml file to your computer by running `wget https://raw.githubusercontent.com/j-simmons-phd/iiac-workstation/v1.0.0-alpha/iiac-workstation.yaml`
 1. Install the requirements by running `ansible-galaxy install -r requirements.yaml`
 1. Execute the playbook by running `ansible-playbook -i,localhost --ask-become-pass ./iiac-workstation.yaml`
 
