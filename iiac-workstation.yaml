@@ -137,6 +137,7 @@
     - role: geerlingguy.packer
 
     - role: gantsign.visual-studio-code
+      visual_studio_code_version: "1.65.2*"
       users:
         - username: "{{ iiac_username }}"
           visual_studio_code_extensions:
