@@ -65,6 +65,7 @@
   hosts: localhost
   connection: local
   gather_facts: yes
+  become: true
   tags: install_utilities
 
   vars:
