@@ -77,7 +77,7 @@
 
   tasks:
   - name: Add git PPA
-    shell: add-apt-repository ppa:git-core/ppa
+    shell: add-apt-repository --yes ppa:git-core/ppa
   - name: Install git
     apt:
       name: "git={{ git_version_to_install }}"  
